@@ -4,6 +4,7 @@ package com.group2.tests;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 //import static com.codeborne.selenide.CollectionCondition.size;
@@ -34,11 +35,15 @@ public class MyFirstTest {
                 text("Selenide: concise UI tests in Java"),
                 text("selenide.org"));
     }
+@BeforeTest
 
     @Test
     public void user_can_search_coffee() {
         open("https://e-dostavka.by/");
-        $(By.xpath("/html/body/div[1]/div/div[3]/div[2]/div/nav/ul/li[9]/a")).click();
+        String searchLocator = "//div[@class='main_menu__inner']//i[@class='fa fa-search']";
+        $(By.xpath(searchLocator)).click();
+       //$(By.xpath("//div{@class='main_menu__inner']//i[@class='fa fa-search']")).click();
+       //$(By.xpath("/html/body/div[1]/div/div[3]/div[2]/div/nav/ul/li[9]/a")).click();
       //  $("body.direction_1.section_10.not_authorized:nth-child(2) div.main__wrap:nth-child(5) div.main:nth-child(4) div.main_menu:nth-child(2) div.main_menu__inner nav:nth-child(1) ul:nth-child(1) li:nth-child(9) > a:nth-child(1)").click();
         // $(By.id("main_menu__search")).click();
         $(By.name("searchtext")).val("кофе молотый dallmayr classic 250").pressEnter();
@@ -56,9 +61,10 @@ public class MyFirstTest {
         System.out.println(coffeeResult);
         System.out.println(coffeeKgPrice);
 
-        if(coffeeKgPrice == "Цена за 1 кг:54.2"){
+
+       /* if(coffeeKgPrice == "Цена за 1 кг:54.2"){
             System.out.println(coffeeKgPrice);
-        }else System.out.println("Цена изменилась");
+        }else System.out.println("Цена изменилась"); */
 
 
         //    $(By.xpath("//body/div[@id='body']/div[1]/div[3]/div[3]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/form[1]/div[1]/a[1]/img[1]"));
