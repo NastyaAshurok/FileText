@@ -1,6 +1,7 @@
 package com.group2.tests.pom;
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -19,6 +20,7 @@ public class LoginPage {
     SelenideElement send = $("body.mail-Page-Body.js-mail-Page-Body.Theme.Theme_color_yandex-default.Theme_root_default.pointerfocus:nth-child(2) div.ns-view-app.ns-view-id-52.mail-App.js-mail-App:nth-child(4) div.ns-view-compose-manager-container-box.ns-view-id-72.mail-ComposeManagerContainer_box div.ns-view-compose-manager-container.ns-view-id-238.js-ComposeManagerContainer div.ComposeManager.ComposeManager_hidden.ComposeManager_size_small div.popup2.popup2_view_classic.popup2_theme_normal.popup2_direction_top-center.popup2_nonvisual_yes.popup2_visible_yes.popup2_motionless.popup2_target_position.ComposePopup.ComposePopup_size_small div.ComposePopup-Content div.ComposePopup-Body div.ComposePopup-BodyContent div.composeReact.ComposeManager-PopupCompose:nth-child(1) div.composeReact__inner:nth-child(2) div.composeReact__footer div.ComposeControlPanel.ComposeControlPanel_desktop div.ComposeControlPanel-Part:nth-child(1) div.ComposeControlPanelButton.ComposeControlPanel-Button.ComposeControlPanel-SendButton.ComposeSendButton.ComposeSendButton_desktop:nth-child(1) > button.control.button2.button2_view_default.button2_tone_default.button2_size_l.button2_theme_action.button2_pin_circle-circle.ComposeControlPanelButton-Button.ComposeControlPanelButton-Button_action");
 
     SelenideElement returnToMessages = $("//a[contains(text(),'Вернуться во \"Входящие\"')]");
+    SelenideElement messageToOpen = $(By.xpath("//div[contains(@class, 'ns-view-messages-item-wrap')][7]"));
 
     public void login(String u, String p) {
         open("https://yandex.by/");
@@ -40,8 +42,9 @@ public class LoginPage {
         send.click();
     }
 
-    public void openMessage(){
+    public void openMessage() {
         returnToMessages.click();
+        messageToOpen.click();
     }
 
     public void logout(String u, String p) {
