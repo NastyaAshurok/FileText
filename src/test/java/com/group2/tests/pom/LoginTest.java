@@ -23,7 +23,7 @@ LoginPage loginPage = new LoginPage();
 
 @Test
     public void login1test(){
-       loginPage.login("valid", "valid");
+       loginPage.login("anastasiaashurok", "***");
        $("sendMessage").click();
        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
     }
