@@ -26,6 +26,7 @@ LoginPage loginPage = new LoginPage();
        loginPage.login("anastasiaashurok", "***");
        $("sendMessage").click();
        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+       loginPage.sendMessage("Hello");
     }
 
     @Test
