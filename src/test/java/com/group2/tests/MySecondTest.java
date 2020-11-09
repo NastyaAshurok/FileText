@@ -18,7 +18,7 @@ import java.net.HttpCookie;
 
 public class MySecondTest {
 
-    @BeforeMethod(firstTimeOnly = true)
+    @BeforeMethod
     protected void beforeTestPrecondition() {
         System.out.println("Before message");
     }
@@ -65,9 +65,9 @@ public class MySecondTest {
         //  $(By.xpath("//input[@id='searchtext']")).setValue("Кофе молотый «Dallmayr» classic, 250 г.");
         $(By.name("searchtext")).val(value).pressEnter();
         // String coffeePriceActual = $(By.xpath("//div[@class='price']")).getText();
-        String result = $("body.direction_1.section_10.not_authorized.search_block__showed:nth-child(2) div.main__wrap div.main:nth-child(4) div.wrapper:nth-child(3) div.template_1_columns div.content:nth-child(4) div.products_catalog.filter_left div.products_block__wrapper.products_4_columns.vertical div.products_card.products_card_444796.trademark_7907 div.form_wrapper form:nth-child(1) div.title:nth-child(5) > a.fancy_ajax").getText();
-        System.out.println(result);
-
+       // String result = $("body.direction_1.section_10.not_authorized.search_block__showed:nth-child(2) div.main__wrap div.main:nth-child(4) div.wrapper:nth-child(3) div.template_1_columns div.content:nth-child(4) div.products_catalog.filter_left div.products_block__wrapper.products_4_columns.vertical div.products_card.products_card_444796.trademark_7907 div.form_wrapper form:nth-child(1) div.title:nth-child(5) > a.fancy_ajax").getText();
+       // System.out.println(result);
+     //   String foundItem = "//img[@alt='" + selectedItem + "']";
 String foundItem = "//div[@class='products_block__wrapper products_4_columns vertical']//i[@class='form_wrapper']";
 $(By.xpath(foundItem)).click();
       //  $(By.linkText("Кофе молотый «Dallmayr» classic, 250 г.")).click();
