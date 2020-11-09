@@ -23,7 +23,7 @@ LoginPage loginPage = new LoginPage();
 
 @Test
     public void login1test(){
-       loginPage.login("anastasiaashurok", "Az6082072erka");
+       loginPage.login("anastasiaashurok", "***");
        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
        loginPage.sendMessage("anastasiaashurok@yandex.by", "Hello");
        loginPage.openMessage();
