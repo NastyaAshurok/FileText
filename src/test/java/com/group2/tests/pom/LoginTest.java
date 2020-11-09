@@ -23,10 +23,10 @@ LoginPage loginPage = new LoginPage();
 
 @Test
     public void login1test(){
-       loginPage.login("anastasiaashurok", "***");
-       $("sendMessage").click();
+       loginPage.login("anastasiaashurok", "Az6082072erka");
        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
        loginPage.sendMessage("anastasiaashurok@yandex.by", "Hello");
+       loginPage.openMessage();
     }
 
     @Test
