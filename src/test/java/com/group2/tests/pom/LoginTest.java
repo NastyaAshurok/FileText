@@ -19,7 +19,17 @@ import java.net.HttpCookie;
 public class LoginTest {
 LoginPage loginPage = new LoginPage();
 
+    @DataProvider(name = "XMLFileLoader")
+    public static Object[][] getDataFromXmlFile() {
+        String fileName = "/path/to/file.xml";
+        String encoding = "UTF-8";
 
+        return loadDataFromXmlFile(fileName, encoding);
+    }
+
+    private static Object[][] loadDataFromXmlFile(final String fileName, final String encoding) {
+        // implementation omitted for brevity
+    }
 
 @Test
     public void login1test(){
@@ -27,6 +37,14 @@ LoginPage loginPage = new LoginPage();
        //Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
        loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
        loginPage.openEmail();
+    }
+
+    @Test(dataProvider = "jsonMessageParser", dataProviderClass = JsonMessageParser.class)
+    public void login3test(){
+        loginPage.login("anastasiaashurok2", "***");
+        //Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+        loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
+        loginPage.openEmail();
     }
 
     @Test
