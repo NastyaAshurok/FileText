@@ -24,9 +24,9 @@ LoginPage loginPage = new LoginPage();
 @Test
     public void login1test(){
        loginPage.login("anastasiaashurok", "***");
-       Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
-       loginPage.sendMessage("anastasiaashurok@yandex.by", "Hello");
-       loginPage.openMessage();
+       //Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+       loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
+       loginPage.openEmail();
     }
 
     @Test
