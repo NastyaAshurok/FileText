@@ -1,5 +1,7 @@
 package com.group2.tests.pom;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
@@ -32,6 +34,8 @@ public class LoginPage {
         openlogin.click();
         login.setValue(u);
         comein.click();
+        comein.waitUntil((Condition) pass,10000);
+        Configuration.timeout = 6000;
         pass.setValue(p);
         submit.click();
     }
