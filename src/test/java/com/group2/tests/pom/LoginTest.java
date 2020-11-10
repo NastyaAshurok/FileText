@@ -31,7 +31,7 @@ LoginPage loginPage = new LoginPage();
 @Test
     public void login1test(){
        loginPage.login("anastasiaashurok", "***");
-       //Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+       Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
        loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
        loginPage.openEmail();
     }
@@ -39,7 +39,7 @@ LoginPage loginPage = new LoginPage();
     @Test(dataProvider = "jsonMessageParser", dataProviderClass = JsonMessageParser.class)
     public void login3test(){
         loginPage.login("anastasiaashurok2", "***");
-        //Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
         loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
         loginPage.openEmail();
     }

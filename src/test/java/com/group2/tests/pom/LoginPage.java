@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Condition.appears;
 import static com.codeborne.selenide.Selenide.*;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -34,8 +36,7 @@ public class LoginPage {
         openlogin.click();
         login.setValue(u);
         comein.click();
-        comein.waitUntil((Condition) pass,10000);
-        Configuration.timeout = 6000;
+        pass.waitUntil(appears,10000);
         pass.setValue(p);
         submit.click();
     }
@@ -46,6 +47,7 @@ public class LoginPage {
 
     public void sendEmail(String email, String text) {
         writeemail.click();
+        textbody.waitUntil(appears,10000);
         emailto.setValue(email);
         textbody.setValue(text);
         send.click();
@@ -53,6 +55,7 @@ public class LoginPage {
 
     public void openEmail() {
         returnToMessages.click();
+        messageToOpen.waitUntil(appears,10000);
         messageToOpen.click();
     }
 
