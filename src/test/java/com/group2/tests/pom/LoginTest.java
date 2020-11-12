@@ -1,49 +1,21 @@
 package com.group2.tests.pom;
 
-import com.codeborne.selenide.SelenideElement;
-import io.restassured.mapper.ObjectMapper;
-import io.restassured.mapper.ObjectMapperDeserializationContext;
-import io.restassured.mapper.ObjectMapperSerializationContext;
-import lombok.Data;
-import org.testng.annotations.*;
-import org.openqa.selenium.By;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.json.*;
-import org.testng.asserts.SoftAssert;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Driver;
-import com.codeborne.selenide.SelenideElement;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
-import com.google.gson.JsonObject;
-import jdk.nashorn.internal.parser.JSONParser;
+
 import lombok.Data;
-import lombok.experimental.Accessors;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-//import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.CollectionCondition.*;
 
 import java.io.IOException;
-import java.net.HttpCookie;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Locale;
 
+//import static com.codeborne.selenide.CollectionCondition.size;
+
+@Data
 public class LoginTest {
 LoginPage loginPage = new LoginPage();
 
@@ -72,19 +44,21 @@ String messageRandom = faker.bothify("????TestMessage");
     }
 
     @Data
-    public static class EmailData{
+    public  class EmailData{
         String login;
         String pass;
         List<Message> messages;
     }
     @Data
-    public static class Message{
+    public  class Message{
         String recipient;
         String title;
         String body;
     }
-   static ObjectMapper mapper = new ObjectMapper();
-    private static EmailData getEmailData() throws IOException {
+
+    ObjectMapper mapper = new ObjectMapper();
+    private  EmailData getEmailData() throws IOException {
+
         EmailData emailData = mapper.readValue(Paths.get(filePath).toFile(), EmailData.class);
         return emailData;
     }
@@ -96,7 +70,7 @@ String messageRandom = faker.bothify("????TestMessage");
 
         Object[][] loginData = new Object[1][2];
         loginData[0][0] = emailData.getLogin();
-        loginData[0][1] = emailData.getPassword();
+        loginData[0][1] = emailData.getPass();
 
         return loginData;
 
