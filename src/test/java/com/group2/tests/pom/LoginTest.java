@@ -61,7 +61,15 @@ LoginPage loginPage = new LoginPage();
 
     private static final String filePath = "src/test/resources/message.json";
 
-  //  Faker faker = new Faker(new Locale("ru"));
+Faker faker = new Faker(new Locale("ru"));
+String messageRandom = faker.bothify("????TestMessage");
+    @Test
+    public void sendRandomMessage(){
+        loginPage.login("anastasiaashurok", "***");
+        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+        loginPage.sendEmail("anastasiaashurok@yandex.by", messageRandom);
+        loginPage.openEmail();
+    }
 
     @Data
     public static class EmailData{
@@ -158,6 +166,7 @@ LoginPage loginPage = new LoginPage();
         loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
         loginPage.openEmail();
     }
+
 
     @Test
     public void login2test(){
