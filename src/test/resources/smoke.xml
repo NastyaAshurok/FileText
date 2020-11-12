@@ -8,6 +8,7 @@
     <test name="Store Test">
         <classes>
             <class name="com.group2.tests.TestCases"/>
+            <class name="com.group2.tests.pom.LoginTest"/>
         </classes>
     </test>
 </suite>

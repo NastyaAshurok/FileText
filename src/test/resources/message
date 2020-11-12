@@ -1,0 +1,17 @@
+{
+  "login": "anastasiaashurok",
+  "password": "****",
+  "messages":
+  [
+    {
+      "recipient": "anastasiaashurok@yandex.by",
+      "title": "Test yandex1",
+      "body": "What's up?"
+    },
+    {
+      "recipient": "anastasiaashurok@yandex.by",
+      "title": "Test yandex2",
+      "body": "How r u doing?"
+    }
+  ]
+}
