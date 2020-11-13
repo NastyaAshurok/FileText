@@ -14,12 +14,11 @@ public class LoginPage {
    // String searchLocator = "//div[@class='main_menu__inner']//i[@class='fa fa-search']";
     // $(By.xpath(searchLocator)).click();
     SelenideElement openLogin = $x("//div[@class='desk-notif-card__card']//a[contains(@class,'login-enter')]");
-    //SelenideElement login = $("#passp-field-login");
-    SelenideElement login = $(By.xpath("//span[@class='Textinput-Box']"));
+    SelenideElement loginField = $(By.xpath("//span[@class='Textinput-Box']"));
     SelenideElement comeIn =$(By.xpath("//div[@class='passp-login-form']//div[contains(@class,'sign-in-button')]"));
-    SelenideElement pass = $(By.xpath("//div[@class='AuthPasswordForm']//span[contains(@class,'Textinput-Box')]"));
+    SelenideElement passwordField = $(By.xpath("//div[@class='AuthPasswordForm']//span[contains(@class,'Textinput-Box')]"));
     SelenideElement submit = $(By.xpath("//div[@class='AuthPasswordForm']//div[contains(@class,'sign-in-button')]"));
-    SelenideElement logoutButton = $("logout");
+    // SelenideElement logoutButton = $("logout");
 
     SelenideElement writeEmail = $(By.xpath("//div[contains(@class,'view-main-action-buttons')]//a[contains(@class,'mail-ComposeButton')]"));
     SelenideElement textBody = $(By.xpath("//div[contains(@class,'PopupCompose')]//div[contains(@class,'composeReact-MBodyPanels')]"));
@@ -32,15 +31,15 @@ public class LoginPage {
     public void login(String u, String p) {
         open("https://yandex.by/");
         openLogin.click();
-        login.setValue(u);
+        loginField.setValue(u);
         comeIn.click();
-        pass.waitUntil(appears,10000);
-        pass.setValue(p);
+        passwordField.waitUntil(appears,10000);
+        passwordField.setValue(p);
         submit.click();
     }
 
     public boolean isLoginPerformedCorrectly() {
-        return login.isDisplayed();
+        return loginField.isDisplayed();
     }
 
     public void sendEmail(String email, String text) {
@@ -58,10 +57,10 @@ public class LoginPage {
     }
 
 
-    public void logout(String u, String p) {
+  /*  public void logout(String u, String p) {
         login.setValue(u);
         pass.setValue(p);
         logoutButton.click();
-    }
+    } */
 
 }
