@@ -57,9 +57,11 @@ public class LoginPage {
         messageToOpen.click();
     }
 
+
     public void logout(String u, String p) {
         login.setValue(u);
         pass.setValue(p);
         logoutButton.click();
     }
+
 }

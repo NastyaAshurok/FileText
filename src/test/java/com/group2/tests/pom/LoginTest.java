@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 
 import lombok.Data;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -20,17 +21,6 @@ public class LoginTest {
 LoginPage loginPage = new LoginPage();
 
     private static final String filePath = "src/test/resources/message.json";
-
-Faker faker = new Faker(new Locale("ru"));
-
-    @Test
-    public void sendRandomMessage(){
-        String messageRandom = faker.bothify("????TestMessage");
-        loginPage.login("anastasiaashurok", "***");
-        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
-        loginPage.sendEmail("anastasiaashurok@yandex.by", messageRandom);
-        loginPage.openEmail();
-    }
 
     @Data
     public  class EmailData{
@@ -93,47 +83,43 @@ Faker faker = new Faker(new Locale("ru"));
         System.out.println(login + " "+password);
     }
 
+    @Test(dataProvider = "sender")
+    public void loginFromProvider(String login, String password){
+        loginPage.login(login, password);
+        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+
+    }
+/*    @BeforeTest
+   public void login(String login, String password){
+        loginPage.login("anastasiaashurok", "***");
+        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+    } */
+
     @Test(dataProvider = "message")
-    public void message(Message message){
-        String rec = "$()";
-        System.out.println("setting r" + message.getRecipient());
-        System.out.println("setting t" + message.getTitle());
-        System.out.println("setting b" + message.getBody());
+    public void messageFromProvider(Message message){
+        loginPage.login("anastasiaashurok", "***");
+        loginPage.sendEmail(message.getRecipient(), message.getBody());
+        loginPage.openEmail();
     }
 
-    @Test(dataProvider = "message2")
-    public void message2(List<Message> list){
-        System.out.println(list.size());
+    Faker faker = new Faker(new Locale("ru"));
 
-
+    @Test
+    public void sendRandomMessage(){
+        String messageRandom = faker.bothify("????TestMessage");
+        loginPage.login("anastasiaashurok", "***");
+        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
+        loginPage.sendEmail("anastasiaashurok@yandex.by", messageRandom);
+        loginPage.openEmail();
     }
 
-
-  /*  public static void main(String[] args) throws IOException {
-        System.out.println(new String(Files.readAllBytes(Path.of(filePath))));
-
-    }*/
 
 @Test
-    public void login1test(){
+    public void messageWithoutProvider(){
        loginPage.login("anastasiaashurok", "***");
        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
        loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
        loginPage.openEmail();
     }
 
-    @Test(dataProvider = "jsonMessageParser", dataProviderClass = JsonMessageParser.class)
-    public void login3test(){
-        loginPage.login("anastasiaashurok2", "***");
-        Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
-        loginPage.sendEmail("anastasiaashurok@yandex.by", "Hello");
-        loginPage.openEmail();
-    }
-
-
-    @Test
-    public void login2test(){
-        loginPage.login("invalid", "invalid");
-
-    }
 }
