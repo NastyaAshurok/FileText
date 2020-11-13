@@ -19,24 +19,13 @@ import java.util.Locale;
 public class LoginTest {
 LoginPage loginPage = new LoginPage();
 
- /*   @DataProvider(name = "XMLFileLoader")
-    public static Object[][] getDataFromXmlFile() {
-        String fileName = "/path/to/file.xml";
-        String encoding = "UTF-8";
-
-        return loadDataFromXmlFile(fileName, encoding);
-    }
-
-    private static Object[][] loadDataFromXmlFile(final String fileName, final String encoding) {
-        // implementation omitted for brevity
-    } */
-
     private static final String filePath = "src/test/resources/message.json";
 
 Faker faker = new Faker(new Locale("ru"));
-String messageRandom = faker.bothify("????TestMessage");
+
     @Test
     public void sendRandomMessage(){
+        String messageRandom = faker.bothify("????TestMessage");
         loginPage.login("anastasiaashurok", "***");
         Assert.assertTrue(loginPage.isLoginPerformedCorrectly());
         loginPage.sendEmail("anastasiaashurok@yandex.by", messageRandom);
